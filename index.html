@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For You, My C.A.</title>
+    <meta name="theme-color" content="#101926" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Sora:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="loadingIntro" class="loading-intro">
+      <div class="intro-card">
+        <p class="eyebrow">Initializing Your Surprise</p>
+        <h2>Building Our World</h2>
+        <p id="loadingText" class="muted">Gathering memories...</p>
+        <div class="intro-progress-track">
+          <div id="introProgressBar" class="intro-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div id="transitionLayer" class="transition-layer">
+      <p id="transitionLabel"></p>
+    </div>
+    <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div id="heartLayer" class="heart-layer"></div>
+
+    <main class="app-shell">
+      <header class="app-header card">
+        <div>
+          <p class="eyebrow">Private App</p>
+          <h1 id="title"></h1>
+          <p id="subtitle" class="subtitle"></p>
+        </div>
+        <div class="header-actions">
+          <button id="musicBtn" class="btn btn-soft">Play Music</button>
+          <button id="sfxBtn" class="btn btn-soft">Sound: On</button>
+          <button id="ambienceBtn" class="btn btn-soft">Ambience: On</button>
+          <button id="installBtn" class="btn hidden">Install App</button>
+        </div>
+        <p class="mini" id="daysCounter"></p>
+        <audio id="bgMusic" loop></audio>
+      </header>
+
+      <nav class="app-nav card" aria-label="Section navigation">
+        <button class="nav-btn active" data-target="hero">Home</button>
+        <button class="nav-btn" data-target="letterSection">Letter</button>
+        <button class="nav-btn" data-target="photoSection">Memories</button>
+        <button class="nav-btn" data-target="loveLabSection">Play</button>
+        <button class="nav-btn" data-target="finalSection">Promise</button>
+      </nav>
+
+      <section id="hero" class="card panel">
+        <p class="muted">
+          I turned your surprise page into a full app vibe, made to feel
+          cinematic and personal.
+        </p>
+        <div class="hero-actions">
+          <button id="beginBtn" class="btn">Start Experience</button>
+        </div>
+      </section>
+
+      <section id="letterSection" class="card panel hidden">
+        <h2>Open This Letter</h2>
+        <p class="muted">Read slowly. Every line is from my heart.</p>
+        <button id="openLetterBtn" class="btn btn-soft">Open Letter</button>
+        <article id="letter" class="letter hidden">
+          <p id="letterLine1"></p>
+          <p id="letterLine2"></p>
+          <p id="letterLine3"></p>
+        </article>
+      </section>
+
+      <section id="photoSection" class="card panel hidden">
+        <h2>Our Photo Story</h2>
+        <p class="muted">Tap any photo to see what that moment means to me.</p>
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <p id="progressText" class="mini"></p>
+        </div>
+        <div id="photoGrid" class="photo-grid"></div>
+        <article id="photoMeaningBox" class="photo-meaning-box hidden">
+          <h3 id="photoMeaningTitle"></h3>
+          <p id="photoMeaningDate" class="mini"></p>
+          <p id="photoMeaningText"></p>
+        </article>
+      </section>
+
+      <section id="timelineSection" class="card panel hidden">
+        <h2>Our Timeline</h2>
+        <p class="muted">A few milestones I never want to forget.</p>
+        <div id="timelineList" class="timeline-list"></div>
+      </section>
+
+      <section id="loveLabSection" class="card panel hidden">
+        <h2>Love Lab</h2>
+        <p class="muted">
+          Slide the meter and see how intense my feelings get.
+        </p>
+        <div class="meter-row">
+          <input id="loveMeter" type="range" min="1" max="100" value="88" />
+          <p class="mini">Love Level: <span id="loveMeterValue">88</span>%</p>
+        </div>
+        <p id="loveMeterText" class="memory-text"></p>
+        <button id="randomReasonBtn" class="btn btn-soft">
+          Tell Me Why I Love You
+        </button>
+        <p id="randomReasonText" class="reason-box hidden"></p>
+      </section>
+
+      <section id="secretSection" class="card panel hidden">
+        <h2>Secret Vault</h2>
+        <p class="muted">Enter our special code to unlock a hidden message.</p>
+        <div class="secret-row">
+          <input
+            id="secretCodeInput"
+            type="password"
+            placeholder="Enter our code"
+          />
+          <button id="unlockBtn" class="btn">Unlock</button>
+        </div>
+        <p id="secretHint" class="mini"></p>
+        <p id="secretMessage" class="reveal-text"></p>
+      </section>
+
+      <section id="skySection" class="card panel hidden">
+        <h2>Our Little Sky</h2>
+        <p class="muted">
+          Click each star. Every one is a memory I kept close.
+        </p>
+        <div id="starField" class="star-field"></div>
+        <p id="memoryText" class="memory-text"></p>
+      </section>
+
+      <section id="finalSection" class="card panel hidden">
+        <h2>One Promise, Forever</h2>
+        <p id="finalPromise" class="final-promise"></p>
+        <button id="revealBtn" class="btn">Reveal My Promise</button>
+        <p id="revealText" class="reveal-text"></p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
