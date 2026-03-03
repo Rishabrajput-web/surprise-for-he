@@ -3,7 +3,7 @@ const config = {
   title: "For You, My CA",
   subtitle:
     "If love had a balance sheet, you would be my greatest asset in every year-end closing.",
-  musicSrc: "",
+  musicSrc: "assets/love-song.mp3",
   relationshipStart: "2024-02-14",
   fixedDaysTogether: 445,
   letter: [
