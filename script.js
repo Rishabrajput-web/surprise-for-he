@@ -867,6 +867,21 @@ function connectNav() {
 }
 
 function registerPwa() {
+  const isLocalHost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "[::1]";
+
+  if (isLocalHost && "serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((registrations) => Promise.all(registrations.map((reg) => reg.unregister())))
+      .catch(() => {
+        // Ignore local cleanup issues.
+      });
+    return;
+  }
+
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {
       // Silent fallback for local file mode.
